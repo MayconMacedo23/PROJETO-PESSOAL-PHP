@@ -23,7 +23,7 @@ class TarefaController {
         $descricao = $_POST['descricao'];
         $status = $_POST['status'];
 
-        this->tarefaModel->criar($titulo, $descricao, $status);
+        $this->tarefaModel->criar($titulo, $descricao, $status);
 
         header('Location: index.php');
     }
