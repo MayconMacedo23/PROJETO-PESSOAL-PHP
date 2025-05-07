@@ -27,4 +27,19 @@ class TarefaController {
 
         header('Location: index.php');
     }
+    
+    public function excluir ()
+    {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $sql = "DELETE FROM tarefas WHERE id = ?";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([$id]);
+        }
+
+        header("Location: index.php");
+        exit;
+    }
+
+
 }
