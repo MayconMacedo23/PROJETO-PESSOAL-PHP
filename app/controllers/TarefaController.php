@@ -13,4 +13,8 @@ class TarefaController {
         $tarefas = $this->tarefaModel->listar();
         require __DIR__ . '/../views/listar.php';
     }
+
+    public function criar() {
+        require __DIR__ .'/../views/formulario.php';
+    }
 }

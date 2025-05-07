@@ -12,4 +12,6 @@ class Tarefa {
         $stmt = $this->pdo->query("SELECT * FROM tarefas");
         return $stmt->fetchAll();
     }
+
+    
 }
