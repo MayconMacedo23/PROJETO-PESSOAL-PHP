@@ -23,7 +23,20 @@ class TarefaController {
         $descricao = $_POST['descricao'];
         $status = $_POST['status'];
 
-        $this->tarefaModel->criar($titulo, $descricao, $status);
+        if (isset($_GET['id]'])) {
+
+            $id = $_GET['id'];
+            $sql = "UPDATE tarefas SET titulo = ?, descricao = ?, status = ? WHERE id = ?";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([$titulo, $descricao, $status, $id]);
+
+        } else {
+
+            $sql = "INSERT INTO tarefas (titulo, descricao, status) VALUES (?, ?, ?)";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([$titulo, $descricao, $status]);
+        }
+
 
         header('Location: index.php');
     }
