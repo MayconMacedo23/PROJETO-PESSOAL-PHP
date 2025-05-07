@@ -3,10 +3,12 @@
 require_once __DIR__ . '/../models/tarefa.php';
 
 class TarefaController {
+    private $pdo;
     private $tarefaModel;
 
     public function __construct($pdo){
-        $this->tarefaModel = new Tarefa ($pdo);
+        $this->pdo = $pdo;
+        $this->tarefaModel = new Tarefa($pdo);
     }
 
     public function index() {
@@ -15,34 +17,30 @@ class TarefaController {
     }
 
     public function criar() {
-        require __DIR__ .'/../views/formulario.php';
+        require __DIR__ . '/../views/formulario.php';
     }
-    
+
     public function salvar() {
         $titulo = $_POST['titulo'];
         $descricao = $_POST['descricao'];
         $status = $_POST['status'];
 
-        if (isset($_GET['id]'])) {
-
+        if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $sql = "UPDATE tarefas SET titulo = ?, descricao = ?, status = ? WHERE id = ?";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([$titulo, $descricao, $status, $id]);
-
         } else {
-
             $sql = "INSERT INTO tarefas (titulo, descricao, status) VALUES (?, ?, ?)";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([$titulo, $descricao, $status]);
         }
 
-
         header('Location: index.php');
+        exit;
     }
-    
-    public function excluir ()
-    {
+
+    public function excluir() {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $sql = "DELETE FROM tarefas WHERE id = ?";
@@ -50,12 +48,11 @@ class TarefaController {
             $stmt->execute([$id]);
         }
 
-        header("Location: index.php");
+        header('Location: index.php');
         exit;
     }
 
-    public function editar()
-    {
+    public function editar() {
         if (!isset($_GET['id'])) {
             echo "ID inválido";
             return;
@@ -68,12 +65,10 @@ class TarefaController {
         $tarefa = $stmt->fetch();
 
         if (!$tarefa) {
-            echo "Tarefa não encontrada;";
+            echo "Tarefa não encontrada.";
             return;
         }
 
-        require_once __DIR__ . '/../views/formulario.php';
+        require __DIR__ . '/../views/formulario.php';
     }
-
-
 }
