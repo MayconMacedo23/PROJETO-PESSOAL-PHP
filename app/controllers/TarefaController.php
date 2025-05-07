@@ -17,4 +17,14 @@ class TarefaController {
     public function criar() {
         require __DIR__ .'/../views/formulario.php';
     }
+    
+    public function salvar() {
+        $titulo = $_POST['titulo'];
+        $descricao = $_POST['descricao'];
+        $status = $_POST['status'];
+
+        this->tarefaModel->criar($titulo, $descricao, $status);
+
+        header('Location: index.php');
+    }
 }
