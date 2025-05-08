@@ -28,7 +28,7 @@
                 <td><?= ucfirst($t['status']) ?></td>
                 <td>
                     <a href="index.php?action=editar&id<?= $t['id'] ?>" class="btn btn-sm btn-warning">Editar</a>
-                    <a href ="index.php?action=excluir$id=<?= $t['id'] ?> "class="btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                    <a href="index.php?action=excluir&id=<?= $t['id'] ?> "class="btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
                 </td>
             </tr>
                 <?php endforeach; ?>
