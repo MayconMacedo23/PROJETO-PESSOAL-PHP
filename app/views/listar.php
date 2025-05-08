@@ -9,7 +9,7 @@
     <div class ="container mt-5">
         <h1 class="mb-4">Minhas Tarefas</h1>
 
-        <a href="index.php?action=criar" class="btn btn-sucess mb -3">+ Nova Tarefa</a>
+        <a href="index.php?action=criar" class="btn btn-success mb-3">+ Nova Tarefa</a>
 
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
@@ -20,7 +20,6 @@
                     <th>Ações</th>
                 </tr>
             </thead>
-            <>
                 <?php foreach ($tarefas as $t): ?>
                 <tr>
                 <td><?= htmlspecialchars($t['titulo']) ?></td>
