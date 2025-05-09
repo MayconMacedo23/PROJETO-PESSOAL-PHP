@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if(!isset($_SESSION['usuario'])) {
+    header('Location: login.php');
+    exit;
+}
+
 if (isset($_SESSION['mensagem'])) {
     echo '
     <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
@@ -23,3 +28,5 @@ if (method_exists($controller, $action)) {
 } else {
     echo "Ação inválida";
 }
+
+
