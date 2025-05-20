@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php if (isset($erro)): ?>
                 <div class="alert alert-danger text-center"><?= $erro ?></div>
             <?php endif; ?>
+            
             <form method="POST" action="">
                 <div class="mb-3">
                     <label>Email:</label>
@@ -48,6 +49,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Entrar</button>
             </form>
+
+            <!-- Botão de Cadastro -->
+            <div class="text-center mt-3">
+                <a href="register.php" class="btn btn-secondary w-100">Cadastrar</a>
+            </div>
         </div>
     </div>
 </div>
